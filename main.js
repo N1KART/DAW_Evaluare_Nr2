@@ -4,24 +4,24 @@ const ctx = canvas.getContext('2d');
 const player = {
     x: canvas.width / 2,
     y: canvas.height - 30,
-    width: 60,
-    height: 15,
-    speed: 5,
-    color: 'blue',
+    width: 70,
+    height: 10,
+    speed: 20,
+    color: '#A1ED1F',
     score: 0
 };
 
 const enemies = [];
-const enemySpeed = 3;
-const enemyProbability = 0.07;
+const enemySpeed = 3.55;
+const enemyProbability = 0.075;
 
 function createEnemy() {
     const x = Math.random() * (canvas.width - 30);
     const y = 0;
-    const width = 20;
-    const height = 20;
+    const width = 25;
+    const height = 25;
     const speed = enemySpeed;
-    const color = 'red';
+    const color = "#" + Math.floor(Math.random()*787867).toString();
 
     return { x, y, width, height, speed, color };
 }
@@ -78,7 +78,7 @@ function updateEnemies() {
             player.y + player.height > enemy.y
         ) {
             enemies.splice(enemies.indexOf(enemy), 1);
-            player.score--;
+            player.score-=10;
         }
     }
 
@@ -86,8 +86,7 @@ function updateEnemies() {
         enemies.push(createEnemy());
     }
 
-    document.querySelector('title').innerHTML = player.score;
-}
+    document.querySelector('title').innerHTML = player.score;}
 
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
