@@ -85,6 +85,8 @@ function updateEnemies() {
     if (Math.random() < enemyProbability) {
         enemies.push(createEnemy());
     }
+
+    document.querySelector('title').innerHTML = player.score;
 }
 
 function animate() {
